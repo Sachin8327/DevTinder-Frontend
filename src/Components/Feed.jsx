@@ -1,49 +1,49 @@
-// import NavBar from "./NavBar";
-// import Footer from "./Footer";
-// import axios from "axios";
-// import React, { useEffect } from "react";
-// import { BASE_URL } from "../utils/constants";
-// import { useDispatch, useSelector } from "react-redux";
-// import { addFeed } from "../utils/feedSlice";
-// import UserCard from "./UserCard";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { BASE_URL } from "../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { addFeed } from "../utils/feedSlice";
+import UserCard from "./UserCard";
 
-// const Feed = () => {
-//   const dispatch = useDispatch();
-//   const feed = useSelector((store) => store.feed);
+const Feed = () => {
+  const dispatch = useDispatch();
+  const feed = useSelector((store) => store.feed);
 
-//   const getFeed = async () => {
-//     if (feed && feed.length > 0) return;
+  const getFeed = async () => {
+    if (feed && feed.length > 0) return;
 
-//     try {
-//       const res = await axios.get(BASE_URL + "/feed", {
-//         withCredentials: true,
-//       });
+    try {
+      const res = await axios.get(BASE_URL + "/feed", {
+        withCredentials: true,
+      });
 
-//       dispatch(addFeed(res.data.data));
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
+      dispatch(addFeed(res.data.data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-//   useEffect(() => {
-//     getFeed();
-//   }, []);
+  useEffect(() => {
+    getFeed();
+  }, []);
 
-//   if (!feed) return null;
+  if (!feed) return null;
 
-//   if (feed.length === 0) {
-//     return (
-//       <h1 className="flex justify-center m-52 text-3xl">
-//         No more users!!!!
-//       </h1>
-//     );
-//   }
+  if (feed.length === 0) {
+    return (
+      <h1 className="flex justify-center m-52 text-3xl">
+        No more users!!!!
+      </h1>
+    );
+  }
 
-//   return (
-//     <div className="flex justify-center my-10">
-//       <UserCard user={feed[0]} />
-//     </div>
-//   );
-// };
+  return (
+    <div className="flex justify-center my-10">
+      <UserCard user={feed[0]} />
+    </div>
+  );
+};
 
-// export default Feed;
+export default Feed;
